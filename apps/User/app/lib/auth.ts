@@ -53,10 +53,16 @@ export const authOptions = {
         try {
           const user = await db.user.create({
             data: {
-              name: credentials.name || "",
-              email: credentials.email || "",
+              name: credentials?.name,
+              email: credentials?.email,
               number: credentials.number,
               password: hashedPassword,
+              Balance: {
+                create: {
+                  amount: 0,
+                  locked: 0,
+                },
+              },
             },
           });
 
